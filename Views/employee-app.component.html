@@ -1,0 +1,56 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div>
+                    <h1>Add Employee</h1>
+                    <form>
+                         <div class="form-group">
+                            <label> Employee Title </label>
+                            <select class="form-control" [(ngModel)]="currentEmployee.emptitle" name="title" >
+                                <option [value]="title" [disabled]="true">Select Option</option>
+                                <option *ngFor = "let dropTitle of empLstDrop" [ngValue]="dropTitle.emptitle">
+                                    {{dropTitle.emptitle}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="empName">Employee Code</label>
+                            <input type="text" class="form-control" [(ngModel)]="currentEmployee.empName" name="empName" id="empName" placeholder="Employee Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="empId">Employee ID</label>
+                            <input type="text" class="form-control" [(ngModel)]="currentEmployee.empId" name="empCode" id="empId" placeholder="Employee ID">
+                        </div>
+                        <button type="button" (click)="AddEmployee()" class="btn btn-success">Add</button>
+                    </form>
+                    <hr>
+                </div>
+                <div>
+                    <table *ngIf="empList.length > 0" class="table">
+                        <thead>
+                            <tr>
+                                <th>Index</th>
+                                <th> Employee Title</th>
+                                <th>Employee Name</th>
+                                <th>Employee ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of empList;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{ emp.emptitle }}</td>
+                                <td>{{ emp.empName }}</td>
+                                <td>{{ emp.empId }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<hr/>
